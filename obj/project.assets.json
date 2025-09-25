@@ -1269,11 +1269,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kevinsamuel/Documents/DriversSchool/src/bgk.csproj",
+      "projectUniqueName": "/Users/kevinsamuel/Documents/GitHub/DrivingSchool/bgk.csproj",
       "projectName": "bgk",
-      "projectPath": "/Users/kevinsamuel/Documents/DriversSchool/src/bgk.csproj",
+      "projectPath": "/Users/kevinsamuel/Documents/GitHub/DrivingSchool/bgk.csproj",
       "packagesPath": "/Users/kevinsamuel/.nuget/packages/",
-      "outputPath": "/Users/kevinsamuel/Documents/DriversSchool/src/obj/",
+      "outputPath": "/Users/kevinsamuel/Documents/GitHub/DrivingSchool/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kevinsamuel/.nuget/NuGet/NuGet.Config"
