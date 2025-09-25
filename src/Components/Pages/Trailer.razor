@@ -1,0 +1,164 @@
+@page "/trailerkoerekort"
+@page "/trailer-holdstart"
+
+<PageTitle>Trailerkørekort | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Trailerkørekort
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.body1" Class="mb-3">
+                    Tag dit trailerkørekort hos Blangstedgård Køreskole i Odense.
+                    Vi tilbyder professionel teoriundervisning og køreundervisning til både private og erhverv.
+                </MudText>
+
+                <MudAlert Severity="Severity.Info" Class="mb-4">
+                    <MudText><strong>Normal holdstart er søndag kl. 17 til 20</strong></MudText>
+                </MudAlert>
+
+                <MudAlert Severity="Severity.Success" Class="mb-4">
+                    <MudText><strong>Særligt tilbud:</strong> Hvis I starter 6 personer samlet på et hold giver vi 10% i rabat</MudText>
+                </MudAlert>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Hvad vi tilbyder:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.School">
+                        <MudText>Professionel teoriundervisning til stor trailer</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.DirectionsCar">
+                        <MudText>Praktisk køreundervisning med moderne skolevogn</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.LocalShipping">
+                        <MudText>Undervisning med vores trailer</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Groups">
+                        <MudText>Betjener Odense området</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Business">
+                        <MudText>Hjælper både unge og ældre, private og erhverv</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Forberedelse:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object">
+                        <MudText>Husk at medbringe lægeerklæring</MudText>
+                    </MudListItem>
+                    <MudListItem T="object">
+                        <MudText>Medbring pasfoto</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring til os
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Pris
+                </MudText>
+                <MudText Typo="Typo.h5" Color="Color.Secondary" Class="mb-2">
+                    4.800,00 DKK
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    Trailerkørekort
+                </MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" FullWidth="true" Href="/betaling">
+                    Se betalingsinfo
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudDivider Class="my-6" />
+
+    <MudText Typo="Typo.h5" Class="mb-4" Color="Color.Primary">
+        Se holdstart og tilmeld dig
+    </MudText>
+
+    <MudPaper Elevation="1" Class="pa-4">
+        <iframe style="width: 100%" id="ddframe" src="https://app.drivedesk.dk/api/school/62/branch/110/limit/all/classes?theme=standard&seats=available&show_prices=show" onload="iFrameResize()" scrolling="no" frameborder="0"></iframe>
+    </MudPaper>
+
+    <MudDivider Class="my-6" />
+
+    <MudGrid>
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="3">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="Icons.Material.Filled.School" Size="Size.Large" Color="Color.Primary" Class="mb-2" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Teoriundervisning til stor trailer</MudText>
+                    <MudText Typo="Typo.body2">Grundig gennemgang af teori for trailerkørsel</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" FullWidth="true">Læs mere</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="3">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="Icons.Material.Filled.DirectionsCar" Size="Size.Large" Color="Color.Primary" Class="mb-2" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Vores skolevogn</MudText>
+                    <MudText Typo="Typo.body2">Moderne køretøj med de nyeste sikkerhedsfunktioner</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" FullWidth="true" Href="/skolevogn">Læs mere</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="3">
+                <MudCardContent Class="text-center">
+                    <MudIcon Icon="Icons.Material.Filled.LocalShipping" Size="Size.Large" Color="Color.Primary" Class="mb-2" />
+                    <MudText Typo="Typo.h6" Class="mb-2">Vores trailer</MudText>
+                    <MudText Typo="Typo.body2">Professionel trailer til undervisning</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" FullWidth="true">Læs mere</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

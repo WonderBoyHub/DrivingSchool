@@ -1,0 +1,171 @@
+@page "/priser"
+
+<PageTitle>Priser | Blangstedgaard Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Priser
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-4" Color="Color.Secondary">
+                    Vores priser
+                </MudText>
+
+                <MudTable Items="@priceList" Hover="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+                    <HeaderContent>
+                        <MudTh>Service</MudTh>
+                        <MudTh Style="text-align:right">Pris</MudTh>
+                        <MudTh Style="text-align:center">Handling</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Service">
+                            <MudText Typo="Typo.body1">
+                                <strong>@context.Service</strong>
+                            </MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Tertiary">
+                                @context.Description
+                            </MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Pris" Style="text-align:right">
+                            <MudText Typo="Typo.h6" Color="Color.Secondary">
+                                <strong>@context.Price DKK</strong>
+                            </MudText>
+                        </MudTd>
+                        <MudTd DataLabel="Handling" Style="text-align:center">
+                            <MudButton Variant="Variant.Outlined"
+                                       Color="Color.Primary"
+                                       Size="Size.Small"
+                                       Href="@context.BookingLink">
+                                Book nu
+                            </MudButton>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </MudPaper>
+
+            <MudAlert Severity="Severity.Info" Class="mb-4">
+                <MudText><strong>Særligt tilbud:</strong> Hvis I starter 6 personer samlet på et hold giver vi 10% i rabat på trailerkørekort.</MudText>
+            </MudAlert>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Hvad er inkluderet:
+                </MudText>
+
+                <MudExpansionPanels MultiExpansion="true" Elevation="0">
+                    <MudExpansionPanel Text="Trailerkørekort - 4.800 DKK">
+                        <MudList T="object">
+                            <MudListItem T="object" Icon="Icons.Material.Filled.School">
+                                <MudText>Teoriundervisning til stor trailer</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.DirectionsCar">
+                                <MudText>Praktisk køreundervisning</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.LocalShipping">
+                                <MudText>Brug af vores trailer og skolevogn</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Event">
+                                <MudText>Holdstart søndag 17:00-20:00</MudText>
+                            </MudListItem>
+                        </MudList>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="Generhvervelse af kørekort - 1.850 DKK">
+                        <MudList T="object">
+                            <MudListItem T="object" Icon="Icons.Material.Filled.OnlineTest">
+                                <MudText>Adgang til online læringsportal i 4 måneder</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.DirectionsCar">
+                                <MudText>Typisk 1 køretime før køreprøven</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Assessment">
+                                <MudText>Forberedelse til kontrollerende prøve</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Support">
+                                <MudText>Personlig vejledning og feedback</MudText>
+                            </MudListItem>
+                        </MudList>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring for tilbud
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Betalingsmuligheder
+                </MudText>
+
+                <MudList T="object" Dense="true">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.CreditCard">
+                        <MudText>Dankort og Visa-Dankort</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.PhonelinkRing">
+                        <MudText>MobilePay: 555822</MudText>
+                    </MudListItem>
+                </MudList>
+
+                <MudButton Variant="Variant.Text" Color="Color.Secondary" FullWidth="true" Href="/betaling" Class="mt-2">
+                    Se betalingsinfo
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private class PriceItem
+    {
+        public string Service { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Price { get; set; } = "";
+        public string BookingLink { get; set; } = "";
+    }
+
+    private readonly List<PriceItem> priceList = new()
+    {
+        new PriceItem
+        {
+            Service = "Trailerkørekort",
+            Description = "Komplet forløb med teori og praktisk undervisning",
+            Price = "4.800,00",
+            BookingLink = "/trailerkoerekort"
+        },
+        new PriceItem
+        {
+            Service = "Generhvervelse af kørekort",
+            Description = "Online portal + køretime + kontrollerende prøve",
+            Price = "1.850,00",
+            BookingLink = "/generhvervelse-af-koerekort"
+        }
+    };
+}

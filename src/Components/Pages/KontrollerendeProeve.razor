@@ -1,0 +1,124 @@
+@page "/kontrollerende-proeve"
+
+<PageTitle>Kontrollerende Prøve | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Kontrollerende Prøve
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.body1" Class="mb-3">
+                    Skal du til kontrollerende prøve? Blangstedgård Køreskole forbereder dig grundigt til både teori og praksis.
+                    Vi hjælper dig med at generhverve dit kørekort gennem professionel vejledning og undervisning.
+                </MudText>
+
+                <MudAlert Severity="Severity.Info" Class="mb-4">
+                    <MudText>Den kontrollerende prøve består af både en teoretisk og en praktisk del, som begge skal bestås.</MudText>
+                </MudAlert>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Hvad vi tilbyder:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.School">
+                        <MudText>Adgang til online læringsportal i 4 måneder</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.DirectionsCar">
+                        <MudText>Typisk 1 køretime før køreprøven</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Support">
+                        <MudText>Støttende læringsmiljø</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Feedback">
+                        <MudText>Personlig feedback og vejledning</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Security">
+                        <MudText>Moderne køretøjer med nyeste sikkerhedsfunktioner</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Processen:
+                </MudText>
+
+                <MudStepper>
+                    <MudStep>
+                        <MudStepLabel>Kontakt Borgerservice</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Besøg Borgerservice for at få tilladelse</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Få tilladelse fra Færdselsstyrelsen</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Få dit P23 tilladelsesdokument</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Kontakt os</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Medbring P23, pas og pasfoto</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Gennemfør prøven</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Både teoretisk og praktisk prøve</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                </MudStepper>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring til os
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Pris
+                </MudText>
+                <MudText Typo="Typo.h5" Color="Color.Secondary" Class="mb-2">
+                    1.850,00 DKK
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    Kontrollerende Prøve
+                </MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" FullWidth="true" Href="/betaling">
+                    Se betalingsinfo
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

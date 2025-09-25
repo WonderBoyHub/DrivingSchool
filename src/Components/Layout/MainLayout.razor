@@ -1,0 +1,128 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<MudLayout>
+    <MudAppBar Elevation="0" Style="background: var(--surface); color: var(--text-dark); border-bottom: 1px solid var(--border-light); backdrop-filter: blur(10px);">
+        <MudIconButton Icon="Icons.Material.Filled.Menu" Style="color: var(--primary-color);" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" Class="d-lg-none" />
+
+        <div class="nav-brand">
+            <img src="/lib/bootstrap/dist/assets/misc/logo.png" alt="Blangstedgaard Køreskole Logo" class="nav-logo" style="height: 45px; width: auto;" />
+            <MudText Typo="Typo.h6" Style="color: var(--text-dark); font-weight: 700; font-size: 1.2rem; margin: 0;">Blangstedgaard Køreskole</MudText>
+        </div>
+
+        <MudSpacer />
+
+        <!-- Desktop Navigation -->
+        <div class="d-none d-lg-flex align-center" style="gap: 1rem;">
+            <MudButton Variant="Variant.Text" Style="color: var(--text-dark);" Href="/" StartIcon="Icons.Material.Filled.Home">
+                Forside
+            </MudButton>
+            <MudButton Variant="Variant.Text" Style="color: var(--text-dark);" Href="/om-blangstedgaard-koereskole" StartIcon="Icons.Material.Filled.Info">
+                Om Os
+            </MudButton>
+            <MudButton Variant="Variant.Text" Style="color: var(--text-dark);" Href="/generhvervelse-af-koerekort" StartIcon="Icons.Material.Filled.School">
+                Generhvervelse
+            </MudButton>
+            <MudButton Variant="Variant.Text" Style="color: var(--text-dark);" Href="/trailerkoerekort" StartIcon="Icons.Material.Filled.LocalShipping">
+                Trailer
+            </MudButton>
+            <MudButton Variant="Variant.Text" Style="color: var(--text-dark);" Href="/kontakt" StartIcon="Icons.Material.Filled.ContactPage">
+                Kontakt
+            </MudButton>
+        </div>
+
+        <MudButton Variant="Variant.Filled"
+                  Style="background: var(--primary-color); color: white; border-radius: 25px; font-weight: 600; margin-left: 1rem;"
+                  Href="tel:+4560639977"
+                  StartIcon="Icons.Material.Filled.Phone">
+            <span class="d-none d-md-inline">(+45) 60 63 99 77</span>
+            <span class="d-md-none">Ring</span>
+        </MudButton>
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Never" Elevation="0" Style="box-shadow: 2px 0 20px var(--shadow);" Class="d-lg-none">
+        <div style="padding: 1rem; background: var(--primary-color); color: white; text-align: center;">
+            <img src="/lib/bootstrap/dist/assets/misc/logo.png" alt="Logo" style="height: 40px; margin-bottom: 0.5rem;" />
+            <MudText Typo="Typo.h6" Style="color: white; font-weight: 600; margin: 0;">Blangstedgaard Køreskole</MudText>
+        </div>
+        <NavMenu />
+    </MudDrawer>
+
+    <MudMainContent Style="background: var(--background);">
+        <div class="container-fluid-custom" style="padding-top: 2rem;">
+            @Body
+        </div>
+
+        <!-- Footer -->
+        <footer style="background: var(--text-dark); color: white; margin-top: 4rem; padding: 3rem 0;">
+            <div class="container-fluid-custom">
+                <MudGrid>
+                    <MudItem xs="12" md="4">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <img src="/lib/bootstrap/dist/assets/misc/logo.png" alt="Logo" style="height: 40px; filter: brightness(0) invert(1);" />
+                            <MudText Typo="Typo.h6" Style="color: white; margin: 0;">Blangstedgaard Køreskole</MudText>
+                        </div>
+                        <MudText Typo="Typo.body2" Style="color: #ccc; line-height: 1.6;">
+                            Din personlige køreskole i Odense. Vi hjælper både unge og gamle, private og erhverv med at blive ansvarlige bilister.
+                        </MudText>
+                    </MudItem>
+
+                    <MudItem xs="12" md="4">
+                        <MudText Typo="Typo.h6" Style="color: white; margin-bottom: 1rem;">Kontakt</MudText>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <MudText Typo="Typo.body2" Style="color: #ccc;">
+                                <MudIcon Icon="Icons.Material.Filled.Phone" Size="Size.Small" Style="margin-right: 0.5rem; color: var(--primary-color);" />
+                                (+45) 60 63 99 77
+                            </MudText>
+                            <MudText Typo="Typo.body2" Style="color: #ccc;">
+                                <MudIcon Icon="Icons.Material.Filled.Email" Size="Size.Small" Style="margin-right: 0.5rem; color: var(--primary-color);" />
+                                post@blangsted-autoskole.dk
+                            </MudText>
+                            <MudText Typo="Typo.body2" Style="color: #ccc;">
+                                <MudIcon Icon="Icons.Material.Filled.LocationOn" Size="Size.Small" Style="margin-right: 0.5rem; color: var(--primary-color);" />
+                                Blommegrenen 197, 5220 Odense
+                            </MudText>
+                        </div>
+                    </MudItem>
+
+                    <MudItem xs="12" md="4">
+                        <MudText Typo="Typo.h6" Style="color: white; margin-bottom: 1rem;">Vores Services</MudText>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <MudLink Href="/generhvervelse-af-koerekort" Style="color: #ccc; text-decoration: none;">Generhvervelse af Kørekort</MudLink>
+                            <MudLink Href="/trailerkoerekort" Style="color: #ccc; text-decoration: none;">Trailerkørekort</MudLink>
+                            <MudLink Href="/kontrollerende-proeve" Style="color: #ccc; text-decoration: none;">Kontrollerende Prøve</MudLink>
+                            <MudLink Href="/teori" Style="color: #ccc; text-decoration: none;">Teoriundervisning</MudLink>
+                            <MudLink Href="/skolevogn" Style="color: #ccc; text-decoration: none;">Skolevogn</MudLink>
+                        </div>
+                    </MudItem>
+                </MudGrid>
+
+                <MudDivider Style="margin: 2rem 0; background-color: #444;" />
+
+                <div style="text-align: center;">
+                    <MudText Typo="Typo.body2" Style="color: #999;">
+                        © 2024 Blangstedgaard Køreskole. Alle rettigheder forbeholdes.
+                    </MudText>
+                </div>
+            </div>
+        </footer>
+    </MudMainContent>
+</MudLayout>
+
+<div id="blazor-error-ui" data-nosnippet>
+    <MudAlert Severity="Severity.Error" Class="ma-4">
+        Der opstod en uventet fejl.
+        <MudButton Color="Color.Primary" Variant="Variant.Text" OnClick="@(() => NavigationManager.Refresh())">
+            Genindlæs
+        </MudButton>
+    </MudAlert>
+</div>
+
+@code {
+    private bool _drawerOpen = false;
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

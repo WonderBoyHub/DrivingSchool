@@ -1,0 +1,155 @@
+@page "/refusion"
+
+<PageTitle>Refusion | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Refusion
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.body1" Class="mb-3">
+                    Få information om refusionsmuligheder ved kørekort og trailerkørekort hos Blangstedgård Køreskole.
+                    Vi hjælper dig med at finde de rette muligheder for støtte til din kørekortsuddannelse.
+                </MudText>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Mulige refusioner:
+                </MudText>
+
+                <MudExpansionPanels MultiExpansion="true">
+                    <MudExpansionPanel Text="Jobcenteret">
+                        <MudList T="object">
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Work">
+                                <MudText>Støtte til trailerkørekort via jobcenteret</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.ContactPhone">
+                                <MudText>Kontakt dit lokale jobcenter for information</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Description">
+                                <MudText>Kræver dokumentation for behov</MudText>
+                            </MudListItem>
+                        </MudList>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="Arbejdsgiverrefusion">
+                        <MudList T="object">
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Business">
+                                <MudText>Din arbejdsgiver kan dække omkostningerne</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Assignment">
+                                <MudText>Særligt relevant for trailerkørekort</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Receipt">
+                                <MudText>Vi udsteder kvittering til arbejdsgiver</MudText>
+                            </MudListItem>
+                        </MudList>
+                    </MudExpansionPanel>
+
+                    <MudExpansionPanel Text="AMU-støtte">
+                        <MudList T="object">
+                            <MudListItem T="object" Icon="Icons.Material.Filled.School">
+                                <MudText>Arbejdsmarkedsuddannelse (AMU) støtte</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.CheckCircle">
+                                <MudText>Kan dække dele af omkostningerne</MudText>
+                            </MudListItem>
+                            <MudListItem T="object" Icon="Icons.Material.Filled.Info">
+                                <MudText>Krav om tilknytning til arbejdsmarkedet</MudText>
+                            </MudListItem>
+                        </MudList>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudPaper>
+
+            <MudAlert Severity="Severity.Info" Class="mb-4">
+                <MudText>
+                    Kontakt os for at høre mere om refusionsmuligheder. Vi hjælper gerne med at finde den rette løsning for dig.
+                </MudText>
+            </MudAlert>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Hvad skal du gøre:
+                </MudText>
+
+                <MudStepper>
+                    <MudStep>
+                        <MudStepLabel>Kontakt os</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Ring eller skriv til os om dine refusionsmuligheder</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Afklar muligheder</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Vi hjælper dig med at finde de rette støtteordninger</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Ansøg om støtte</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Ansøg om refusion hos relevante myndigheder</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                    <MudStep>
+                        <MudStepLabel>Start uddannelse</MudStepLabel>
+                        <MudStepContent>
+                            <MudText>Begynd din kørekortsuddannelse hos os</MudText>
+                        </MudStepContent>
+                    </MudStep>
+                </MudStepper>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring om refusion
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Nyttige links
+                </MudText>
+
+                <MudStack>
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" FullWidth="true" Href="/priser">
+                        Se vores priser
+                    </MudButton>
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" FullWidth="true" Href="/betaling">
+                        Betalingsinformation
+                    </MudButton>
+                    <MudButton Variant="Variant.Text" Color="Color.Secondary" FullWidth="true" Href="/uddannelsesforloeb">
+                        Uddannelsesforløb
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

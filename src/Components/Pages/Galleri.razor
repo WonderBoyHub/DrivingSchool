@@ -1,0 +1,109 @@
+@page "/galleri"
+
+<PageTitle>Galleri | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Galleri
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.body1" Class="mb-3">
+                    Se vores moderne køretøjer og faciliteter. Hos Blangstedgård Køreskole har vi alt det udstyr,
+                    du skal bruge for at få en god køreundervisning.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4">
+                <MudCardContent>
+                    <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <MudIcon Icon="Icons.Material.Filled.DirectionsCar" Size="Size.Large" Color="Color.Surface" />
+                    </div>
+                    <MudText Typo="Typo.h6" Class="mb-2">Vores Skolevogn</MudText>
+                    <MudText Typo="Typo.body2">
+                        Moderne køretøj med alle nyeste sikkerhedsfunktioner.
+                        Lettermanøvreret og perfekt til køreundervisning.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4">
+                <MudCardContent>
+                    <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <MudIcon Icon="Icons.Material.Filled.LocalShipping" Size="Size.Large" Color="Color.Surface" />
+                    </div>
+                    <MudText Typo="Typo.h6" Class="mb-2">Vores Trailer</MudText>
+                    <MudText Typo="Typo.body2">
+                        Professionel trailer til trailerkørekort undervisning.
+                        Perfekt til både begyndere og erfarne chauffører.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4">
+                <MudCardContent>
+                    <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <MudIcon Icon="Icons.Material.Filled.School" Size="Size.Large" Color="Color.Surface" />
+                    </div>
+                    <MudText Typo="Typo.h6" Class="mb-2">Teoriundervisning</MudText>
+                    <MudText Typo="Typo.body2">
+                        Moderne faciliteter til teoriundervisning med online læringsportal
+                        og personlig vejledning.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4">
+                <MudCardContent>
+                    <div style="height: 200px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <MudIcon Icon="Icons.Material.Filled.LocationOn" Size="Size.Large" Color="Color.Surface" />
+                    </div>
+                    <MudText Typo="Typo.h6" Class="mb-2">Vores Lokation</MudText>
+                    <MudText Typo="Typo.body2">
+                        Centralt beliggende på Blommegrenen 197 i Odense.
+                        Let at finde og god parkering.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12">
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-4" Color="Color.Primary">
+                    Vil du se mere?
+                </MudText>
+
+                <MudGrid>
+                    <MudItem xs="12" md="4">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/skolevogn">
+                            <MudIcon Icon="Icons.Material.Filled.DirectionsCar" Class="mr-2" />
+                            Se vores skolevogn
+                        </MudButton>
+                    </MudItem>
+                    <MudItem xs="12" md="4">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                            <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                            Find vej til os
+                        </MudButton>
+                    </MudItem>
+                    <MudItem xs="12" md="4">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977">
+                            <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                            Book tid
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

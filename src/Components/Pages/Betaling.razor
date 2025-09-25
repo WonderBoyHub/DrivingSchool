@@ -1,0 +1,109 @@
+@page "/betaling"
+
+<PageTitle>Betaling | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Betaling
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Om betaling:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.CreditCard">
+                        <MudText>Vi accepterer kun Dankort og Visa-Dankort</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Phone">
+                        <MudText><strong>MobilePay nummer:</strong> 555822</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-4" Color="Color.Primary">
+                    Priser
+                </MudText>
+
+                <MudTable Items="@prices" Hover="true" Breakpoint="Breakpoint.Sm">
+                    <HeaderContent>
+                        <MudTh>Service</MudTh>
+                        <MudTh Style="text-align:right">Pris</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Service">@context.Service</MudTd>
+                        <MudTd DataLabel="Pris" Style="text-align:right">
+                            <MudText Typo="Typo.body1" Color="Color.Secondary">
+                                <strong>@context.Price DKK</strong>
+                            </MudText>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring til os
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Vil du høre mere?
+                </MudText>
+
+                <MudStack>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true">
+                        Teoriundervisning til stor trailer
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/skolevogn">
+                        Vores skolevogn
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true">
+                        Vores trailer
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private class PriceItem
+    {
+        public string Service { get; set; } = "";
+        public string Price { get; set; } = "";
+    }
+
+    private readonly List<PriceItem> prices = new()
+    {
+        new PriceItem { Service = "Trailerkørekort", Price = "4.800,00" },
+        new PriceItem { Service = "Orienterende Prøve eller Generhvervelse", Price = "1.850,00" }
+    };
+}

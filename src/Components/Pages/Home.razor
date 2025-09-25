@@ -1,0 +1,272 @@
+@page "/"
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Køreskole Odense - Blangstedgaard Køreskole | Kørekort</PageTitle>
+
+<!-- Hero Section with Slideshow -->
+<section class="hero-section">
+    <div class="slideshow-container" id="slideshow">
+        <!-- Slides will be dynamically populated -->
+        @foreach (var (image, index) in slideImages.Select((img, i) => (img, i)))
+        {
+            <div class="slide @(index == currentSlide ? "active" : "")">
+                <img src="@image" alt="Blangstedgaard Køreskole - Billede @(index + 1)" loading="@(index == 0 ? "eager" : "lazy")" />
+            </div>
+        }
+
+        <div class="hero-content">
+            <h1 class="hero-title">Velkommen til Blangstedgaard Køreskole</h1>
+            <p class="hero-subtitle">Din personlige køreskole i Odense - Professionel køreundervisning siden mange år</p>
+
+            <div class="cta-buttons">
+                <a href="/kontakt" class="cta-primary">
+                    <MudIcon Icon="Icons.Material.Filled.BookOnline" Size="Size.Small" />
+                    Book køretimer
+                </a>
+                <a href="tel:+4560639977" class="cta-secondary">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Size="Size.Small" />
+                    Ring (+45) 60 63 99 77
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section-spacing">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem;">Vores Services</h2>
+        <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Vi tilbyder professionel køreundervisning og hjælper dig med at opnå dit kørekort</p>
+    </div>
+
+    <div class="service-grid">
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/studentscar.jpg" alt="Generhvervelse af kørekort" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Generhvervelse af Kørekort</h3>
+                <p class="service-description">
+                    Har du mistet dit kørekort? Vi hjælper dig med at få det tilbage gennem kontrollerende prøve.
+                    Erfaren vejledning og grundig forberedelse til både teori og praksis.
+                </p>
+                <a href="/generhvervelse-af-koerekort" class="service-link">
+                    Læs mere
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/cartrailer.jpeg" alt="Trailerkørekort" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Trailerkørekort</h3>
+                <p class="service-description">
+                    Tag dit trailerkørekort hos os. Professionel undervisning til både private og erhverv.
+                    Moderne trailere og erfarne instruktører sikrer den bedste uddannelse.
+                </p>
+                <a href="/trailerkoerekort" class="service-link">
+                    Se holdstart
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/safety.jpg" alt="Kontrollerende prøve" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Kontrollerende Prøve</h3>
+                <p class="service-description">
+                    Skal du til kontrollerende prøve? Vi forbereder dig grundigt til både teori og praksis.
+                    Skræddersyet undervisning der giver dig selvtillid og sikkerhed.
+                </p>
+                <a href="/kontrollerende-proeve" class="service-link">
+                    Læs mere
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/teori.jpeg" alt="Teoriundervisning" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Teoriundervisning</h3>
+                <p class="service-description">
+                    Grundig teoriundervisning i moderne lokaler. Vi gennemgår alle aspekter af færdselsreglerne
+                    og sikrer, at du er velforberedt til teoriprøven.
+                </p>
+                <a href="/teori" class="service-link">
+                    Læs mere
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/driversschoolscar.png" alt="Skolevogn" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Moderne Skolevogne</h3>
+                <p class="service-description">
+                    Vores moderne køretøjer er udstyret med de nyeste sikkerhedsfunktioner.
+                    Komfortable og sikre biler, der giver den bedste læringsoplevelse.
+                </p>
+                <a href="/skolevogn" class="service-link">
+                    Se vores biler
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+
+        <div class="service-card fade-in">
+            <div class="service-image">
+                <img src="/lib/bootstrap/dist/assets/misc/gearstick.jpg" alt="Køreundervisning" />
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">Individuel Undervisning</h3>
+                <p class="service-description">
+                    Personlig og tålmodig køreundervisning tilpasset dit niveau og behov.
+                    Vi tager os tiden til at sikre, at du bliver en tryg og ansvarlig bilist.
+                </p>
+                <a href="/kontakt" class="service-link">
+                    Book timer
+                    <MudIcon Icon="Icons.Material.Filled.ArrowForward" Size="Size.Small" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section with Instructor -->
+<section class="about-section">
+    <div class="about-content slide-in-left">
+        <div class="instructor-image">
+            <img src="/lib/bootstrap/dist/assets/misc/carsten.jpg" alt="Carsten - Kørelærer" />
+        </div>
+        <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-dark);">Mød Carsten - Din Erfarne Kørelærer</h2>
+        <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Med mange års erfaring i køreundervisning, hjælper Carsten både nye og erfarne chauffører med at udvikle deres kørselsfærdigheder.
+            Hos Blangstedgård Køreskole får du personlig og professionel vejledning i et trygt og lærerigt miljø.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+            <div style="text-align: center;">
+                <div style="background: var(--primary-color); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; font-weight: 700;">15+</div>
+                <p style="margin: 0; font-weight: 600;">År med erfaring</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="background: var(--primary-color); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; font-weight: 700;">500+</div>
+                <p style="margin: 0; font-weight: 600;">Beståede køreprøver</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="background: var(--primary-color); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 2rem; font-weight: 700;">95%</div>
+                <p style="margin: 0; font-weight: 600;">Succesrate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Klar til at starte?</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center; opacity: 0.9;">Kontakt os i dag og tag det første skridt mod dit kørekort</p>
+
+    <div class="contact-grid">
+        <div class="contact-item">
+            <MudIcon Icon="Icons.Material.Filled.Phone" Class="contact-icon" />
+            <div>
+                <div style="font-weight: 600; margin-bottom: 0.2rem;">Ring til os</div>
+                <div style="opacity: 0.9;">(+45) 60 63 99 77</div>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <MudIcon Icon="Icons.Material.Filled.Email" Class="contact-icon" />
+            <div>
+                <div style="font-weight: 600; margin-bottom: 0.2rem;">Send en email</div>
+                <div style="opacity: 0.9;">post@blangsted-autoskole.dk</div>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="contact-icon" />
+            <div>
+                <div style="font-weight: 600; margin-bottom: 0.2rem;">Besøg os</div>
+                <div style="opacity: 0.9;">Blommegrenen 197, 5220 Odense</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="/kontakt" style="background: white; color: var(--primary-color); padding: 1rem 2rem; border-radius: 50px; font-weight: 600; font-size: 1.1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(255,255,255,0.3); transition: all 0.3s ease;">
+            <MudIcon Icon="Icons.Material.Filled.ContactPage" Size="Size.Small" />
+            Kontakt os nu
+        </a>
+    </div>
+</section>
+
+@code {
+    private readonly List<string> slideImages = new()
+    {
+        "/lib/bootstrap/dist/assets/slides/20181025_152006-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20181125_213625.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20191118_194322-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20200113_152727-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20200223_001606-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20200225_164106-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20200504_114522-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/20200505_114217-scaled-1-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/6351203e33200.jpeg",
+        "/lib/bootstrap/dist/assets/slides/635b0f49e7653.jpeg",
+        "/lib/bootstrap/dist/assets/slides/636a74edd232d.jpeg",
+        "/lib/bootstrap/dist/assets/slides/636a74edef6b1.jpeg",
+        "/lib/bootstrap/dist/assets/slides/636a74edf1910.jpeg",
+        "/lib/bootstrap/dist/assets/slides/637256b02efe0.jpeg",
+        "/lib/bootstrap/dist/assets/slides/643da453e0656.jpeg",
+        "/lib/bootstrap/dist/assets/slides/643da498e6cf6.jpeg",
+        "/lib/bootstrap/dist/assets/slides/643da49906423.jpeg",
+        "/lib/bootstrap/dist/assets/slides/643fe34878120.jpeg",
+        "/lib/bootstrap/dist/assets/slides/643fe34895389.jpeg",
+        "/lib/bootstrap/dist/assets/slides/64cfc7af36ceb.jpeg",
+        "/lib/bootstrap/dist/assets/slides/64cfc8fb81b12.jpeg",
+        "/lib/bootstrap/dist/assets/slides/64cfc94560bf0.jpeg",
+        "/lib/bootstrap/dist/assets/slides/64cfc9d8c3ba9.jpeg",
+        "/lib/bootstrap/dist/assets/slides/65516a8ebc08e.jpeg",
+        "/lib/bootstrap/dist/assets/slides/65b82ad855718-scaled.jpeg",
+        "/lib/bootstrap/dist/assets/slides/6677234f0b4a3.jpeg"
+    };
+
+    private int currentSlide = 0;
+    private Timer? slideTimer;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            StartSlideshow();
+        }
+    }
+
+    private void StartSlideshow()
+    {
+        slideTimer = new Timer(NextSlide, null, TimeSpan.FromSeconds(4), TimeSpan.FromSeconds(4));
+    }
+
+    private async void NextSlide(object? state)
+    {
+        currentSlide = (currentSlide + 1) % slideImages.Count;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        slideTimer?.Dispose();
+    }
+}

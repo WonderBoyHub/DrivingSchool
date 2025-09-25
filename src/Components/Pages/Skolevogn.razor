@@ -1,0 +1,103 @@
+@page "/skolevogn"
+
+<PageTitle>Skolevogn | Blangstedgård Køreskole</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h3" Class="mb-4" Color="Color.Primary">
+        Vores Skolevogn
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" md="8">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.body1" Class="mb-3">
+                    Hos Blangstedgård Køreskole kører vi i moderne, lettermanøvrerede køretøjer med de nyeste sikkerhedsfunktioner.
+                    Vores skolevogne er specielt udvalgt for at give dig den bedste læringsoplevelse.
+                </MudText>
+
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Vores køretøjer:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Security">
+                        <MudText>Nyeste sikkerhedsfunktioner</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.DirectionsCar">
+                        <MudText>Moderne og lettermanøvrerede</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Build">
+                        <MudText>Regelmæssig service og vedligeholdelse</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Eco">
+                        <MudText>Miljøvenlige køretøjer</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Secondary">
+                    Perfekt til:
+                </MudText>
+
+                <MudList T="object">
+                    <MudListItem T="object" Icon="Icons.Material.Filled.School">
+                        <MudText>Generhvervelse af kørekort</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.Assessment">
+                        <MudText>Kontrollerende prøve</MudText>
+                    </MudListItem>
+                    <MudListItem T="object" Icon="Icons.Material.Filled.LocalShipping">
+                        <MudText>Trailerkørekort (som trækkende køretøj)</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4 mb-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Kontakt os
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Phone" Class="mr-2" />
+                    <strong>Telefon:</strong> (+45) 60 63 99 77
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-2">
+                    <MudIcon Icon="Icons.Material.Filled.Email" Class="mr-2" />
+                    <strong>Email:</strong> post@blangsted-autoskole.dk
+                </MudText>
+                <MudText Typo="Typo.body2" Class="mb-4">
+                    <MudIcon Icon="Icons.Material.Filled.LocationOn" Class="mr-2" />
+                    <strong>Adresse:</strong> Blommegrenen 197, 5220 Odense
+                </MudText>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Href="tel:+4560639977" Class="mb-2">
+                    Ring til os
+                </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Href="/kontakt">
+                    Send besked
+                </MudButton>
+            </MudPaper>
+
+            <MudPaper Elevation="2" Class="pa-4">
+                <MudText Typo="Typo.h6" Class="mb-2" Color="Color.Primary">
+                    Se vores kurser
+                </MudText>
+
+                <MudStack>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" FullWidth="true" Href="/generhvervelse-af-koerekort">
+                        Generhvervelse
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" FullWidth="true" Href="/trailerkoerekort">
+                        Trailerkørekort
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" FullWidth="true" Href="/kontrollerende-proeve">
+                        Kontrollerende prøve
+                    </MudButton>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
