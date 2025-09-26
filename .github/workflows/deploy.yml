@@ -39,14 +39,6 @@ jobs:
           name: blazor-server-app
           path: ${{ github.workspace }}/publish
 
-  deploy:
-    name: Deploy to Azure Web App
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: production
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
