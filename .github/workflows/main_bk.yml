@@ -51,6 +51,21 @@ jobs:
           path: ./publish  # ensures a predictable folder
 
       - name: Deploy to Azure Web App
+        id: deploy-attempt-1
+        continue-on-error: true
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'bk'
+          slot-name: 'Production'
+          package: ./publish
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3491FAFD1B6F4689B94BCC58065EC5BB }}
+
+      - name: Wait for slot to free up
+        if: ${{ steps.deploy-attempt-1.outcome == 'failure' }}
+        run: sleep 60
+
+      - name: Deploy to Azure Web App (retry)
+        if: ${{ steps.deploy-attempt-1.outcome == 'failure' }}
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
