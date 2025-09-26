@@ -8,7 +8,9 @@
     <div class="slideshow-container" id="slideshow">
         @if (slideImages.Count > 0)
         {
-            <MudCarousel Class="hero-carousel"
+            <MudCarousel 
+                         TData="string"   
+                         Class="hero-carousel"
                          AutoCycle="true"
                          AutoCycleTime="@slideInterval"
                          EnableSwipeGesture="false"
