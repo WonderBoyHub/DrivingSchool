@@ -17,18 +17,17 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     permissions:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          # If your App Service isn’t on .NET 9 yet, switch to '8.x'
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
       - name: Restore
         run: dotnet restore
 
@@ -54,24 +53,8 @@ jobs:
           name: dotnet-publish
           path: ./publish  # ensures a predictable folder
 
-      - name: 'Deploy to Azure Web App (Attempt 1)'
-        id: deploy-attempt-1
-        continue-on-error: true
+      - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          slot-name: 'Production'
-          package: ./publish
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3491FAFD1B6F4689B94BCC58065EC5BB }}
-
-      - name: 'Wait for 90s on failure'
-        if: ${{ steps.deploy-attempt-1.outcome == 'failure' }}
-        run: sleep 90
-
-      - name: 'Deploy to Azure Web App (Attempt 2)'
-        if: ${{ steps.deploy-attempt-1.outcome == 'failure' }}
-        uses: azure/webapps-deploy@v3
-        id: deploy-to-webapp
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: 'Production'
