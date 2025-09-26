@@ -11,15 +11,22 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AZURE_WEBAPP_NAME: 'bk'
+  AZURE_WEBAPP_NAME: bk
   DOTNET_VERSION: '9.x'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-    - uses: actions/checkout@v4
-      steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
       - name: Restore
         run: dotnet restore
 
@@ -33,15 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-publish
-          path: ${{ github.workspace }}/publish
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-        
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    permissions:
-      contents: read
+          path: ${{ github.workspace }}/publish/
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,12 +50,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dotnet-publish
-          path: ./publish  # ensures a predictable folder
+          path: ./publish
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          slot-name: 'Production'
           package: ./publish
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3491FAFD1B6F4689B94BCC58065EC5BB }}
