@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: bk
+  AZURE_WEBAPP_NAME: bk-cpeddsdee0dgctfj.swedencentral-01.azurewebsites.net
   DOTNET_VERSION: '9.0.x'
 
 jobs:
