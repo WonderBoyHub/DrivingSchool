@@ -5,7 +5,7 @@
     --tertiary-color: rgba(255, 88, 88, 0);
     --text-dark: #1a1a1a;
     --text-light: #ffffff;
-    --background: #191b1d;
+    --background: #ffffff;
     --surface: #ffffff;
     --border-light: #e5e5e5;
     --shadow: rgba(0, 0, 0, 0.1);
@@ -79,25 +79,43 @@ a:hover, .btn-link:hover {
     box-shadow: 0 8px 32px var(--shadow);
 }
 
-.slide {
+.hero-carousel {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hero-carousel .mud-carousel-swipe,
+.hero-carousel .mud-carousel-item,
+.hero-carousel .mud-carousel-item > div {
+    height: 100%;
+}
+
+.hero-carousel .mud-carousel-item {
+    display: flex;
+}
+
+.hero-slide {
+    position: relative;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
 }
 
-.slide.active {
-    opacity: 1;
-}
-
-.slide img {
+.hero-slide-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 12px;
+    user-select: none;
+}
+
+.hero-fallback {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(232, 230, 220, 0.85), rgba(255, 255, 255, 0.95));
 }
 
 .hero-content {
@@ -109,6 +127,7 @@ a:hover, .btn-link:hover {
     color: white;
     padding: 3rem 2rem 2rem;
     text-align: center;
+    z-index: 1;
 }
 
 .hero-title {
@@ -494,7 +513,7 @@ h1:focus {
 }
 
 .mud-appbar {
-    background: var(--surface) !important;
+    background: #e8e6dc !important;
     color: var(--text-dark) !important;
     box-shadow: 0 2px 20px var(--shadow) !important;
     border-bottom: 1px solid var(--border-light);
