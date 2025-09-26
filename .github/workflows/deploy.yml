@@ -51,9 +51,6 @@ jobs:
           name: blazor-server-app
           path: publish
 
-      - name: Archive publish output
-        run: zip -r publish.zip publish
-
       - name: Azure login
         uses: azure/login@v2
         with:
@@ -64,5 +61,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          package: publish.zip
-          deployment-method: zipDeploy
+          package: publish
