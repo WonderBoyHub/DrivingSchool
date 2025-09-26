@@ -2,9 +2,10 @@
     --primary-color: #d73502;
     --secondary-color: #ff6b35;
     --accent-color: #ff8c42;
+    --tertiary-color: rgba(255, 88, 88, 0);
     --text-dark: #1a1a1a;
     --text-light: #ffffff;
-    --background: #fefefe;
+    --background: #191b1d;
     --surface: #ffffff;
     --border-light: #e5e5e5;
     --shadow: rgba(0, 0, 0, 0.1);

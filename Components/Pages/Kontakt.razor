@@ -3,7 +3,7 @@
 <PageTitle>Kontakt Blangstedgaard Køreskole Odense - Blommegrenen</PageTitle>
 
 <!-- Hero Section -->
-<section class="hero-section" style="min-height: 40vh; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); position: relative; overflow: hidden;">
+<section class="hero-section" style="min-height: 40vh; background: linear-gradient(135deg, var(--tertiary-color), var(--tertiary-color)); position: relative; overflow: hidden;">
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/images/misc/safety.jpg') center/cover; opacity: 0.2;"></div>
     <div class="hero-content" style="position: relative; z-index: 1; background: none; padding: 4rem 2rem; text-align: center;">
         <h1 class="hero-title" style="color: white; margin-bottom: 1rem;">Kontakt Os</h1>
@@ -117,25 +117,25 @@
                 <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--text-dark); margin-bottom: 2rem; text-align: center;">Send os en besked</h3>
 
                 <MudForm Style="">
-                    <MudTextField @bind-Value="@contactForm.Name"
+                    <MudTextField @bind-Value="@_contactForm.Name"
                                   Label="Navn"
                                   Required="true"
                                   RequiredError="Navn er påkrævet"
                                   Class="mb-3" />
 
-                    <MudTextField @bind-Value="@contactForm.Email"
+                    <MudTextField @bind-Value="@_contactForm.Email"
                                   Label="Email"
                                   InputType="InputType.Email"
                                   Required="true"
                                   RequiredError="Email er påkrævet"
                                   Class="mb-3" />
 
-                    <MudTextField @bind-Value="@contactForm.Phone"
+                    <MudTextField @bind-Value="@_contactForm.Phone"
                                   Label="Telefonnummer"
                                   InputType="InputType.Telephone"
                                   Class="mb-3" />
 
-                    <MudSelect @bind-Value="@contactForm.Subject"
+                    <MudSelect @bind-Value="@_contactForm.Subject"
                                Label="Emne"
                                Required="true"
                                RequiredError="Vælg et emne"
@@ -147,7 +147,7 @@
                         <MudSelectItem Value="@("Andet")">Andet</MudSelectItem>
                     </MudSelect>
 
-                    <MudTextField @bind-Value="@contactForm.Message"
+                    <MudTextField @bind-Value="@_contactForm.Message"
                                   Label="Besked"
                                   Lines="4"
                                   Required="true"
@@ -200,7 +200,7 @@
 </div>
 
 @code {
-    private ContactForm contactForm = new();
+    private ContactForm _contactForm = new();
 
     private class ContactForm
     {
@@ -219,7 +219,7 @@
         await Task.Delay(100); // Simulate async operation
 
         // Reset form
-        contactForm = new();
+        _contactForm = new();
 
         // Show success message (you might want to use SnackBar)
         // Snackbar.Add("Besked sendt! Vi kontakter dig snarest.", Severity.Success);
