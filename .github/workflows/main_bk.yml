@@ -1,4 +1,4 @@
-name: Build and deploy ASP.NET Core app to Azure Web App - bk
+name: Build and deploy .NET 9 Blazor Server to Azure Web App - bk
 
 on:
   push:
@@ -19,15 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    permissions:
-      contents: read
-
-    steps:
+        steps:
       - name: Restore
         run: dotnet restore
 
@@ -42,6 +34,14 @@ jobs:
         with:
           name: dotnet-publish
           path: ${{ github.workspace }}/publish
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    permissions:
+      contents: read
 
   deploy:
     runs-on: ubuntu-latest
