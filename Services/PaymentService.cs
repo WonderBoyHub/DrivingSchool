@@ -15,13 +15,13 @@ public interface IPaymentService
 public class PaymentService : IPaymentService
 {
     private readonly IPaymentClient _paymentClient;
-    private readonly IConfiguration _configuration;
+    //private readonly IConfiguration _configuration;
     private readonly ILogger<PaymentService> _logger;
 
-    public PaymentService(IPaymentClient paymentClient, IConfiguration configuration, ILogger<PaymentService> logger)
+    public PaymentService(IPaymentClient paymentClient, ILogger<PaymentService> logger)
     {
         _paymentClient = paymentClient;
-        _configuration = configuration;
+        // _configuration = configuration;
         _logger = logger;
     }
 
