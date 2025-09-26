@@ -1,18 +1,38 @@
 @page "/"
-@implements IDisposable
-@inject IJSRuntime JSRuntime
+@inject IWebHostEnvironment WebHostEnvironment
 
 <PageTitle>Køreskole Odense - Blangstedgaard Køreskole | Kørekort</PageTitle>
 
 <!-- Hero Section with Slideshow -->
 <section class="hero-section">
     <div class="slideshow-container" id="slideshow">
-        <!-- Slides will be dynamically populated -->
-        @foreach (var (image, index) in slideImages.Select((img, i) => (img, i)))
+        @if (slideImages.Count > 0)
         {
-            <div class="slide @(index == currentSlide ? "active" : "")">
-                <img src="@image" alt="Blangstedgaard Køreskole - Billede @(index + 1)" loading="@(index == 0 ? "eager" : "lazy")" />
-            </div>
+            <MudCarousel Class="hero-carousel"
+                         AutoCycle="true"
+                         AutoCycleTime="@slideInterval"
+                         EnableSwipeGesture="false"
+                         ShowArrows="false"
+                         ShowBullets="false"
+                         Style="height: 100%;">
+                @foreach (var (image, index) in slideImages.Select((img, i) => (img, i)))
+                {
+                    <MudCarouselItem>
+                        <div class="hero-slide">
+                            <img src="@image"
+                                 alt="Blangstedgaard Køreskole - Billede @(index + 1)"
+                                 loading="@(index == 0 ? "eager" : "lazy")"
+                                 draggable="false"
+                                 oncontextmenu="return false;"
+                                 class="hero-slide-image" />
+                        </div>
+                    </MudCarouselItem>
+                }
+            </MudCarousel>
+        }
+        else
+        {
+            <div class="hero-fallback" aria-hidden="true"></div>
         }
 
         <div class="hero-content">
@@ -213,60 +233,25 @@
 </section>
 
 @code {
-    private readonly List<string> slideImages = new()
-    {
-        "/images/slides/20181025_152006-scaled-1-scaled.jpeg",
-        "/images/slides/20181125_213625.jpeg",
-        "/images/slides/20191118_194322-scaled.jpeg",
-        "/images/slides/20200113_152727-scaled-1-scaled.jpeg",
-        "/images/slides/20200223_001606-scaled-1-scaled.jpeg",
-        "/images/slides/20200225_164106-scaled-1-scaled.jpeg",
-        "/images/slides/20200504_114522-scaled-1-scaled.jpeg",
-        "/images/slides/20200505_114217-scaled-1-scaled.jpeg",
-        "/images/slides/6351203e33200.jpeg",
-        "/images/slides/635b0f49e7653.jpeg",
-        "/images/slides/636a74edd232d.jpeg",
-        "/images/slides/636a74edef6b1.jpeg",
-        "/images/slides/636a74edf1910.jpeg",
-        "/images/slides/637256b02efe0.jpeg",
-        "/images/slides/643da453e0656.jpeg",
-        "/images/slides/643da498e6cf6.jpeg",
-        "/images/slides/643da49906423.jpeg",
-        "/images/slides/643fe34878120.jpeg",
-        "/images/slides/643fe34895389.jpeg",
-        "/images/slides/64cfc7af36ceb.jpeg",
-        "/images/slides/64cfc8fb81b12.jpeg",
-        "/images/slides/64cfc94560bf0.jpeg",
-        "/images/slides/64cfc9d8c3ba9.jpeg",
-        "/images/slides/65516a8ebc08e.jpeg",
-        "/images/slides/65b82ad855718-scaled.jpeg",
-        "/images/slides/6677234f0b4a3.jpeg"
-    };
+    private static readonly string[] SupportedSlideExtensions = new[] { ".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp" };
+    private static readonly TimeSpan slideInterval = TimeSpan.FromSeconds(4);
 
-    private int currentSlide = 0;
-    private Timer? slideTimer;
+    private List<string> slideImages = new();
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnInitialized()
     {
-        if (firstRender)
+        var slidesDirectory = Path.Combine(WebHostEnvironment.WebRootPath, "images", "slides");
+
+        if (!Directory.Exists(slidesDirectory))
         {
-            StartSlideshow();
+            return;
         }
-    }
 
-    private void StartSlideshow()
-    {
-        slideTimer = new Timer(NextSlide, null, TimeSpan.FromSeconds(4), TimeSpan.FromSeconds(4));
-    }
-
-    private async void NextSlide(object? state)
-    {
-        currentSlide = (currentSlide + 1) % slideImages.Count;
-        await InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        slideTimer?.Dispose();
+        slideImages = Directory
+            .EnumerateFiles(slidesDirectory)
+            .Where(file => SupportedSlideExtensions.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase))
+            .OrderBy(file => Path.GetFileName(file), StringComparer.OrdinalIgnoreCase)
+            .Select(file => $"/images/slides/{Path.GetFileName(file)}")
+            .ToList();
     }
 }
