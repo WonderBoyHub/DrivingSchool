@@ -2,7 +2,11 @@
 @inject NavigationManager NavigationManager
 
 <MudLayout>
+
+    <MudAppBar Elevation="0" Style="background: #e8e6dc; color: var(--text-dark); border-bottom: 1px solid var(--border-light); backdrop-filter: blur(10px);">
+
     <MudAppBar Elevation="0" Style="background: #e7e5dc; color: var(--text-dark); border-bottom: 1px solid var(--border-light); backdrop-filter: blur(10px);">
+
         <MudIconButton Icon="Icons.Material.Filled.Menu" Style="color: var(--primary-color);" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" Class="d-lg-none" />
 
         <div class="nav-brand">
