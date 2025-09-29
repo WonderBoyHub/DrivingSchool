@@ -1,10 +1,44 @@
 @page "/"
 @inject HttpClient HttpClient
 
-<PageTitle>Køreskole Odense - Blangstedgaard Køreskole | Kørekort</PageTitle>
+<PageTitle>Køreskole Odense - Blangstedgård Køreskole | Kørekort</PageTitle>
 
 <!-- Hero Section with Slideshow -->
 <section class="hero-section">
+    <div class="slideshow-container" id="slideshow">
+        @if (slideImages.Count > 0)
+        {
+            <MudCarousel TData="string"
+                         Class="hero-carousel"
+                         AutoCycle="true"
+                         AutoCycleTime="@slideInterval"
+                         EnableSwipeGesture="false"
+                         ShowArrows="false"
+                         ShowBullets="false"
+                         Style="height: 100%;">
+                @foreach (var (image, index) in slideImages.Select((img, i) => (img, i)))
+                {
+                    <MudCarouselItem>
+                        <div class="hero-slide">
+                            <img src="@image"
+                                 alt="Blangstedgaard Køreskole - Billede @(index + 1)"
+                                 loading="@(index == 0 ? "eager" : "lazy")"
+                                 draggable="false"
+                                 oncontextmenu="return false;"
+                                 class="hero-slide-image" />
+                        </div>
+                    </MudCarouselItem>
+                }
+            </MudCarousel>
+        }
+        else
+        {
+            <div class="hero-fallback" aria-hidden="true"></div>
+        }
+
+        <div class="hero-content">
+            <h1 class="hero-title">Velkommen til Blangstedgaard Køreskole</h1>
+            <p class="hero-subtitle">Din personlige køreskole i Odense - Professionel køreundervisning siden mange år</p>
     <div class="slideshow-container" id="slideshow">
         @if (slideImages.Count > 0)
         {
@@ -250,5 +284,27 @@
             "/images/slides/slide2.jpg",
             "/images/slides/slide3.jpg"
         };
+    }
+
+    private static readonly string[] SupportedSlideExtensions = new[] { ".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp" };
+    private static readonly TimeSpan slideInterval = TimeSpan.FromSeconds(4);
+
+    private List<string> slideImages = new();
+
+    protected override void OnInitialized()
+    {
+        var slidesDirectory = Path.Combine(WebHostEnvironment.WebRootPath, "images", "slides");
+
+        if (!Directory.Exists(slidesDirectory))
+        {
+            return;
+        }
+
+        slideImages = Directory
+            .EnumerateFiles(slidesDirectory)
+            .Where(file => SupportedSlideExtensions.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase))
+            .OrderBy(file => Path.GetFileName(file), StringComparer.OrdinalIgnoreCase)
+            .Select(file => $"/images/slides/{Path.GetFileName(file)}")
+            .ToList();
     }
 }
