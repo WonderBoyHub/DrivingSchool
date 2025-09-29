@@ -1,5 +1,5 @@
 @page "/"
-@inject IWebHostEnvironment WebHostEnvironment
+@inject HttpClient HttpClient
 
 <PageTitle>Køreskole Odense - Blangstedgaard Køreskole | Kørekort</PageTitle>
 
@@ -242,18 +242,13 @@
 
     protected override void OnInitialized()
     {
-        var slidesDirectory = Path.Combine(WebHostEnvironment.WebRootPath, "images", "slides");
-
-        if (!Directory.Exists(slidesDirectory))
+        // In Blazor WASM, we can't access the file system directly
+        // Pre-define the slide images that are available
+        slideImages = new List<string>
         {
-            return;
-        }
-
-        slideImages = Directory
-            .EnumerateFiles(slidesDirectory)
-            .Where(file => SupportedSlideExtensions.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase))
-            .OrderBy(file => Path.GetFileName(file), StringComparer.OrdinalIgnoreCase)
-            .Select(file => $"/images/slides/{Path.GetFileName(file)}")
-            .ToList();
+            "/images/slides/slide1.jpg",
+            "/images/slides/slide2.jpg",
+            "/images/slides/slide3.jpg"
+        };
     }
 }

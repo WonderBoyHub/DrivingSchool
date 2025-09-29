@@ -1,10 +1,10 @@
-using Mollie.Api.Client.Abstract;
-using Mollie.Api.Models;
-using Mollie.Api.Models.Payment;
-using Mollie.Api.Models.Payment.Request;
-using Mollie.Api.Models.Payment.Response;
+using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace bgk.Services;
+
+public record PaymentRequest(decimal Amount, string Description, string RedirectUrl);
+public record PaymentResponse(string Id, string Status, string CheckoutUrl);
 
 public interface IPaymentService
 {
@@ -14,38 +14,28 @@ public interface IPaymentService
 
 public class PaymentService : IPaymentService
 {
-    private readonly IPaymentClient _paymentClient;
-    //private readonly IConfiguration _configuration;
-    private readonly ILogger<PaymentService> _logger;
+    private readonly HttpClient _httpClient;
 
-    public PaymentService(IPaymentClient paymentClient, ILogger<PaymentService> logger)
+    public PaymentService(HttpClient httpClient)
     {
-        _paymentClient = paymentClient;
-        // _configuration = configuration;
-        _logger = logger;
+        _httpClient = httpClient;
     }
 
     public async Task<string> CreatePaymentAsync(decimal amount, string description, string redirectUrl)
     {
         try
         {
-            var paymentRequest = new PaymentRequest
-            {
-                Amount = new Amount(Currency.EUR, amount),
-                Description = description,
-                RedirectUrl = redirectUrl,
-                Method = PaymentMethod.Ideal // Default to iDEAL for Danish customers
-            };
+            var paymentRequest = new PaymentRequest(amount, description, redirectUrl);
 
-            var paymentResponse = await _paymentClient.CreatePaymentAsync(paymentRequest);
+            // In a real implementation, this would call your backend API
+            // For now, return a mock URL
+            await Task.Delay(500); // Simulate API call
 
-            _logger.LogInformation("Payment created with ID: {PaymentId}", paymentResponse.Id);
-
-            return paymentResponse.Links.Checkout.Href;
+            return "https://www.mollie.com/checkout/test-payment-url";
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error creating payment for amount: {Amount}", amount);
+            Console.WriteLine($"Error creating payment for amount: {amount}. Error: {ex.Message}");
             throw;
         }
     }
@@ -54,13 +44,15 @@ public class PaymentService : IPaymentService
     {
         try
         {
-            var payment = await _paymentClient.GetPaymentAsync(paymentId);
-            _logger.LogInformation("Retrieved payment status: {Status} for ID: {PaymentId}", payment.Status, paymentId);
-            return payment;
+            // In a real implementation, this would call your backend API
+            // For now, return a mock response
+            await Task.Delay(500); // Simulate API call
+
+            return new PaymentResponse(paymentId, "paid", "");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving payment status for ID: {PaymentId}", paymentId);
+            Console.WriteLine($"Error retrieving payment status for ID: {paymentId}. Error: {ex.Message}");
             throw;
         }
     }

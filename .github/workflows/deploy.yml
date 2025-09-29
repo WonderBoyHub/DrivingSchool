@@ -1,4 +1,4 @@
-name: Deploy Blazor Server app
+name: Deploy Blazor WASM app
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
       - name: Upload publish artifact
         uses: actions/upload-artifact@v4
         with:
-          name: blazor-server-app
+          name: blazor-wasm-app
           path: ${{ github.workspace }}/publish
 
   deploy:
@@ -48,7 +48,7 @@ jobs:
       - name: Download publish artifact
         uses: actions/download-artifact@v4
         with:
-          name: blazor-server-app
+          name: blazor-wasm-app
           path: publish
 
       - name: Azure login
